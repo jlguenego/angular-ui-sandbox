@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test</title>
+	</head>
+	<body ng-app="myApp" ng-controller="MyCtrl" >
+
+		<select ng-model="uiIncludeFragment">
+			<option value="#fragment-1" selected>#fragment-1</option>
+			<option value="#fragment-2">#fragment-2</option>
+			<option value="#fragment-3">#fragment-3</option>
+		</select>
+
+		<div class="result">
+			<ui-include src="'templates.html'" fragment="uiIncludeFragment" ng-show="uiIncludeFragment"></ui-include>
+		</div>
+
+		<script src="../app/bower_components/jquery/jquery.min.js"></script>
+		<script src="../app/bower_components/angular/angular.min.js"></script>
+		<script src="../app/bower_components/angular-ui-utils/ui-utils.min.js"></script>
+		<script>
+(function() {
+	var app = angular.module('myApp', ['ui.include']);
+
+	app.controller('MyCtrl', [ '$scope', function($scope) {
+		$scope.uiIncludeFragment = undefined;
+	}]);
+
+
+
+})();
+
+		</script>
+	</body>
+</html>
