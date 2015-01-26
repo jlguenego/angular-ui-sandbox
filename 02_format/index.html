@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>Test</title>
+	</head>
+	<body ng-app="myApp" ng-controller="MyCtrl" >
+		Lastname: <input ng-model="lastname" /><br/>
+		Firstname: <input ng-model="firstname" /><br/>
+
+		Not Formatted Expr: <input type="text" size="100" ng-model="not_formatted" /><br/>
+		Formatted Expr: {{not_formatted | format : { lastname: lastname, firstname: firstname } }}
+
+		<script src="../app/bower_components/angular/angular.min.js"></script>
+		<script src="../app/bower_components/angular-ui-utils/ui-utils.min.js"></script>
+		<script>
+(function() {
+	var app = angular.module('myApp', ['ui.format']);
+
+	app.controller('MyCtrl', [ '$scope', function($scope) {
+		$scope.lastname = "GUENEGO";
+		$scope.firstname = "Jean-Louis";
+		$scope.not_formatted = "Coucou :firstname";
+	}]);
+
+})();
+
+		</script>
+	</body>
+</html>
