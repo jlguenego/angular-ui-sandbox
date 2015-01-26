@@ -2,7 +2,25 @@
 	<head>
 		<title>Test</title>
 	</head>
-	<body>
+	<body ng-app="myApp" ng-controller="MyCtrl" >
+		<input ng-model="coucou" ui-event="{ blur : 'blurCallback($event)' }" />
+		{{coucou}}
 
+		<script src="../app/bower_components/angular/angular.min.js"></script>
+		<script src="../app/bower_components/angular-ui-utils/ui-utils.min.js"></script>
+		<script>
+(function() {
+	var app = angular.module('myApp', ['ui.event']);
+
+	app.controller('MyCtrl', [ '$scope', function($scope) {
+		$scope.coucou = "Hello";
+		$scope.blurCallback = function(evt) {
+			alert('Goodbye. Input content is: ' + evt.target.value);
+		};
+	}]);
+
+})();
+
+		</script>
 	</body>
 </html>
